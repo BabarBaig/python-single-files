@@ -1,12 +1,9 @@
-'''
+''
 Created on Dec 27, 2017
-
 @author: Babar Baig
-
 Functions in this file are called by __main__ at the bottom of the file.
 '''
 from builtins import int
-
 
 def for_01(array1):
     """
