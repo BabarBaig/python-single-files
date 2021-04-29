@@ -1,0 +1,7 @@
+README.md
+apachelog.py
+setup.py
+apachelog.egg-info/PKG-INFO
+apachelog.egg-info/SOURCES.txt
+apachelog.egg-info/dependency_links.txt
+apachelog.egg-info/top_level.txt
