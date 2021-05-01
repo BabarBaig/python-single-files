@@ -15,11 +15,6 @@
 
 import random
 
-def main():
-    pass
-
-if __name__ == '__main__':
-    main()
 
 def create_board(sz_board1):
     board1 = []
@@ -36,39 +31,47 @@ def random_row(board1):
     return random.randint(0, row_idx_max)
 
 def random_col(board1):
-    col_idx_max = len(board[0]) - 1
+    col_idx_max = len(board1[0]) - 1
     return random.randint(0, col_idx_max)
 
-board_sz = 5
-board_idx_max = board_sz-1
-board_idx_max_str = str(board_idx_max)
-board = create_board(board_sz)
-print("Let's play Battleship!")
-print_board(board)
+def start_main():
+    board_sz = 5
+    board_idx_max = board_sz-1
+    board_idx_max_str = str(board_idx_max)
+    board = create_board(board_sz)
+    print("Let's play Battleship!")
+    print_board(board)
 
-ship_row = random_row(board)
-ship_col = random_col(board)
-print(ship_row, ship_col)
-turn_max = 6
+    ship_row = random_row(board)
+    ship_col = random_col(board)
+    print(ship_row, ship_col)
+    turn_max = 6
 
-for turn in range(turn_max):
-    guess_row = int(input("Guess Row [0-:"+board_idx_max_str+"]:"))
-    guess_col = int(input("Guess Col [0-:"+board_idx_max_str+"]:"))
-    if guess_row == ship_row and guess_col == ship_col:
-        print("Congratulations! You sunk my battleship!")
-        break
-    else:
-        if (guess_row<0 or guess_row>board_idx_max) or \
-           (guess_col<0 or guess_col>board_idx_max):
-            print("Oops, that's not even in the ocean.")
-        elif board[guess_row][guess_col]=='X':
-            print("You guessed that one already.")
+    for turn in range(turn_max):
+        guess_row = int(input("Guess Row [0-:"+board_idx_max_str+"]:"))
+        guess_col = int(input("Guess Col [0-:"+board_idx_max_str+"]:"))
+        if guess_row == ship_row and guess_col == ship_col:
+            print("Congratulations! You sunk my battleship!")
+            break
         else:
-            print("You missed my battleship!")
-            board[guess_row][guess_col] = 'X'
-            print_board(board)
-    print(turn+1)
+            if (guess_row<0 or guess_row>board_idx_max) or \
+            (guess_col<0 or guess_col>board_idx_max):
+                print("Oops, that's not even in the ocean.")
+            elif board[guess_row][guess_col]=='X':
+                print("You guessed that one already.")
+            else:
+                print("You missed my battleship!")
+                board[guess_row][guess_col] = 'X'
+                print_board(board)
+        print(turn+1)
 
-    if turn+1==turn_max:
-        print("Game Over")
-#
+        if turn+1==turn_max:
+            print("Game Over")
+
+
+def main():
+    start_main()
+
+
+if __name__ == '__main__':
+    main()
