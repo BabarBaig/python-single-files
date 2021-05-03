@@ -20,16 +20,13 @@ def create_board(sz_board1):
     rows, cols = (sz_board1, sz_board1)
     board = [['O' for i in range(cols)] for j in range(rows)]
     return board
-# def create_board(sz_board1):
-#     board1 = []
-#     for count in range (sz_board1):
-#         board1.append(['O']*5) #Add 1 element in board1--a list with 5 elements
-#     return board1
+
 
 def print_board(board1):
     print()
     for row in board1:          #Iterate over each row in board[]
         print(" ".join(row))    #Concat all 'O's, separate by a space
+
 
 def battleship_game():
     board_sz = 5
@@ -39,12 +36,10 @@ def battleship_game():
 
     ship_row = random.randint(1, board_sz)
     ship_col = random.randint(1, board_sz)
-    print(f'Ship location: [{ship_row}, {ship_col}]')
+    print(f'\n\tShip location: [{ship_row}, {ship_col}]')
     turn_max = 6
-    found = False
 
     for turn in range(turn_max):
-        if found: break
         print_board(board)
         print(f'Lives remaining {turn_max - turn}')
         prompt = "Guess Row: [1 - " + str(board_sz) + "]\t"
@@ -54,7 +49,7 @@ def battleship_game():
 
         if guess_row == ship_row and guess_col == ship_col:
             print("Congratulations! You sunk my battleship!")
-            found = True
+            break
         elif guess_row < 1 or guess_row > board_sz or guess_col < 1 or guess_col > board_sz:
             print("Oops, that's not even in the ocean.")
         elif board[guess_row-1][guess_col-1] == 'X':
@@ -63,14 +58,8 @@ def battleship_game():
             print("You missed my battleship!")
             board[guess_row-1][guess_col-1] = 'X'
 
-    if not found:
-        print("Game Over")
-    print(f'Ship location: [{ship_row}, {ship_col}]')
-
-
-def main():
-    battleship_game()
+    print("Game Over")
 
 
 if __name__ == '__main__':
-    main()
+    battleship_game()
