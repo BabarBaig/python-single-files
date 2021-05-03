@@ -9,21 +9,27 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 
-def digit_sum(number):
-  sum = 0
-  new_number = number
-  while new_number > 0:
-    right_most_digit = new_number % 10
-    sum += right_most_digit
-    new_number = new_number // 10
-  return sum
+def digit_sum(number: int) -> int:
+    """
+    Return the sum of the digits in input int: number
+    """
+    assert type(number) is int, "Input must be an int, got: " + str(number)
+
+    sum = 0
+    new_number = number
+    while new_number > 0:
+        right_most_digit = new_number % 10
+        sum += right_most_digit
+        new_number = new_number // 10       # Integer division
+    return sum
+
 
 def main():
-  print(digit_sum(100))
-  print(digit_sum(1234))
-  print(digit_sum(4004))
-  print(digit_sum(4321))
-  print(digit_sum(99999))
+    for val in (100, 1234, 4004, 4321, 99999):
+        print(f'Sum of digits of {val}\tis {digit_sum(val)}')
+    # Cause an error condition
+    val = 1.5
+    print(f'Sum of digits of {val}\tis {digit_sum(val)}')
 
 if __name__ == '__main__':
     main()
