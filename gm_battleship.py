@@ -17,10 +17,14 @@ import random
 
 
 def create_board(sz_board1):
-    board1 = []
-    for count in range (sz_board1):
-        board1.append(['O']*5) #Add 1 element in board1--a list with 5 elements
-    return board1
+    rows, cols = (sz_board1, sz_board1)
+    board = [['O' for i in range(cols)] for j in range(rows)]
+    return board
+# def create_board(sz_board1):
+#     board1 = []
+#     for count in range (sz_board1):
+#         board1.append(['O']*5) #Add 1 element in board1--a list with 5 elements
+#     return board1
 
 def print_board(board1):
     print()
