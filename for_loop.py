@@ -1,8 +1,8 @@
-''
+"""
 Created on Dec 27, 2017
 @author: Babar Baig
-Functions in this file are called by __main__ at the bottom of the file.
-'''
+"""
+
 from builtins import int
 
 
@@ -34,9 +34,9 @@ def for_03(start, stop_before, jump):
     Jump by [jump] to next value.
     Note new style of print() that includes values of variables
     """
-    assert(type(start)       is int)
-    assert(type(stop_before) is int)
-    assert(type(jump)        is int)
+    assert type(start)       is int
+    assert type(stop_before) is int
+    assert type(jump)        is int
     for x in range(start, stop_before, jump):
         print("Square of %d is %d" % (x, x*x))
 
@@ -47,9 +47,11 @@ def prob_01(array1, array2):
     element or they have the same last element. Both arrays will be length 1 or more.
     Flag an exception if one or both the arrays are empty
     """
-    assert(len(array1) > 0)
-    assert(len(array2) > 0)
+    assert len(array1) > 0
+    assert len(array2) > 0
     return array1[0]==array2[0] or array1[-1]==array2[-1]
+
+
 if __name__ == '__main__':
     print(for_01([]))           # 0
     print(for_01([1, 4, 9, 16, 25, 36, 49, 64, 81]))    # 285
