@@ -101,15 +101,6 @@ def move_file(folder_source, folder_dest, oldfn_before, year, oldfn_after,
 		from shutil import move
 		move(folder_source+'/'+old_fn, folder_dest + '/'+ new_fn)
 
-def rename_fn_06(start_folder, fn):
-	os.chdir(start_folder)
-	filepath = get_fn(start_folder)
-	oldfn = os.path.split(filepath)[1]
-	root_phrase_1 = 'VDI2014-'
-	root_phrase_2 = ' Fidelity.pdf'
-	counter = '01'
-	new_fn = root_phrase_1 + counter + root_phrase_2
-	os.rename(oldfn, new_fn)
 
 def rename_fn_04(start_folder, oldfn_before, oldfn_after, fn_before, fn_after):
 	os.chdir(start_folder)
@@ -133,6 +124,7 @@ def rename_fn_01(start_folder, oldfn_before, year, start_mth, end_mth, oldfn_aft
 		try:    os.rename(old_fn, new_fn)
 		except: print('Failed rename [' + old_fn + '] to [' + new_fn + ']')
 
+
 def rename_file_prompt(start_folder, str_old, str_new):
 	for oldfn in os.listdir():
 		if str_old in oldfn:
@@ -143,6 +135,7 @@ def rename_file_prompt(start_folder, str_old, str_new):
 			elif   resp == 'x':
 				break
 
+
 def rename_files():
 	''' Prompt use for a directory, an old string, and a new string.  In that directory,
 	find files that containg the old string and replace it with the new string
@@ -152,7 +145,7 @@ def rename_files():
 	#import tkinter.filedialog
 	#dir_base = tkinter.filedialog.askdirectory()
 	os.chdir(dir_base)
-	str_old = tkinter.simpledialog.askstring('', 'Enter old string to replace: ')
+	str_old = tkinter.simpledialog.askstring('', 'Enter old string to be replaced: ')
 	str_new = tkinter.simpledialog.askstring('', 'Enter new string: ')
 
 	for fn_old in os.listdir():
@@ -165,7 +158,6 @@ def rename_files():
 		elif (resp == False): continue
 		os.rename(fn_old, fn_new)
 
-# =~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~
 
 if __name__ == '__main__':
 	#create_index_html()
