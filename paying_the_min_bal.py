@@ -5,6 +5,7 @@ def paying_the_min( balance, annualInterestRate, monthlyPaymentRate):
     balance:            Outstanding balance on the credit card
     annualInterestRate: Annual interest rate as a decimal
     monthlyPaymentRate: Minimum monthly payment rate as a decimal'''
+
     monthlyInterestRate = annualInterestRate / 12.0
     totalPaid = 0.0
     for i in range(12):
@@ -23,4 +24,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
