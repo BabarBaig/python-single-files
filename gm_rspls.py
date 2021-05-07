@@ -26,7 +26,7 @@ def number_to_name(number):
     elif number == 4:
         return "scissors"
     else:
-        print "Sorry I don't recognize: ", number
+        print( "Sorry I don't recognize: ", number)
         return -1
     
 def name_to_number(name):
@@ -42,7 +42,7 @@ def name_to_number(name):
     elif name == "scissors":
         return 4
     else:
-        print "Sorry I don't recognize: ", name
+        print( "Sorry I don't recognize: ", name)
         return -1
 
 
@@ -68,10 +68,10 @@ def rpsls(name):
     comp_choice = number_to_name(comp_number)
     
     # print results
-    print "\n"
-    print "Player chooses"  , name
-    print "Computer chooses", comp_choice
-    print print_result
+    print( "\n")
+    print( "Player chooses"  , name)
+    print( "Computer chooses", comp_choice)
+    print( print_result)
 
     
 # test your code
