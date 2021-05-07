@@ -1,6 +1,7 @@
 import random
 import sys
 
+
 def computer_guess_the_number(min, max):
     print(f'\nPlease think of a number between {min} and {max} inclusive!')
     input('Press any key when ready ...')
@@ -21,7 +22,16 @@ def computer_guess_the_number(min, max):
 
 def user_guess_the_number(min, max):
     random_number = random.randint(min, max)
-    print(f'\nI thought of a number between {min} and {max} inclusive {45}.  Try to guess it.')
+    print(f'\nI thought of a number between {min} and {max} inclusive {random_number}.  Try to guess it.')
+    guess = 0
+    while guess != random_number:
+        guess = int(input(f'Guess a number between {min} and {max} inclusive:\t'))
+        if guess < random_number:
+            print('Sorry, guess again.  Too low.')
+        elif guess > random_number:
+            print('Sorry, guess again.  Too high.')
+        else:
+            print(f'Success!  You guessed the number {random_number}.')
 
 
 if __name__ == '__main__':
