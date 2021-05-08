@@ -7,21 +7,22 @@ https://www.randomlists.com/data/words.json
 
 import random
 import string
-import aaa_words
+import gm_hangman_words
 
-def get_valid_word(word_list) -> str:
+
+def get_valid_word(guessed_so_far) -> str:
     """
-    Choose a random word from a word list that
-    doesn't have a space or hyphen in it.
+    Choose a random word from a word list that doesn't have a space or hyphen in it.
     """
 
-    word = random.choice(word_list)    
+    word = random.choice(guessed_so_far)    
     while ' ' in word or '-' in word:
-        word = random.choice(word_list)
-    return word
+        word = random.choice(guessed_so_far)
+    return word.lower()
+
 
 def hangman():
-    word = get_valid_word(aaa_words.words)
+    word = get_valid_word(gm_hangman_words.words)
     word_letters = set(word)        # letters in the hangman word
     alphabet = set(string.ascii_lowercase)
     used_letters = set()
@@ -29,20 +30,25 @@ def hangman():
 
     # print(word)
     while len(word_letters) > 0 and lives > 0:
-        print(f'You have {lives} lives left')
+        print(f'\nYou have {lives} lives left')
         print("You've used these letters:\t", ' '.join(sorted(used_letters)))
-        word_list = [letter if letter in used_letters else '_' for letter in word]
-        print('Current word:\t', ' '.join(word_list))
+        guessed_so_far = [letter if letter in used_letters else '_' for letter in word]
+        print('Current word:\t', ' '.join(guessed_so_far))
 
-        guessed_letter = input('Guess a letter:\t').lower()
+        guessed_letter = input('Guess a letter (or ~ to quit):\t').lower()
+        if guessed_letter == '~':
+            print('Goodbuy ...')
+            return
         if guessed_letter in alphabet - used_letters:
             used_letters.add(guessed_letter)
             if guessed_letter in word_letters:
-                print('You guessed correctly!')
                 word_letters.remove(guessed_letter)
+                if len(word_letters) > 0:
+                    print('You guessed correctly!')
             else:
                 lives -= 1
-                print('Sorry, guess again!')
+                if lives > 0:
+                    print('Sorry, not a match!')
         elif guessed_letter in used_letters:
             print('You already guessed that letter!  Try again')
         else:
@@ -51,6 +57,7 @@ def hangman():
     if lives > 0:
         print('Congratulations, you correctly guessed:\t', word)
     else:
-        print('Sorry you lose.  The word:\t', word)
+        print('Sorry you lose.\nThe word:\t', word)
+
 
 hangman()
