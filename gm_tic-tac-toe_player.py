@@ -1,5 +1,5 @@
 """
-Implement tic-tac-toe player
+Implement player class for popular game: Tic Tac Toe
 """
 
 import math
