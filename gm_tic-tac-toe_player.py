@@ -2,7 +2,7 @@
 Implement player class for popular game: Tic Tac Toe
 """
 
-import math
+# import math
 import random
 
 
@@ -19,7 +19,9 @@ class RandomComputerPlayer(Player):
         super.__init__(letter)
 
     def get_move(self, game):
-        square = random.choice()
+        """ Get a random spot on the board """
+
+        return random.choice(game.available_moves())
 
 
 class HumanPlayer(Player):
@@ -27,4 +29,15 @@ class HumanPlayer(Player):
         super.__init__(letter)
 
     def get_move(self, game):
-        pass
+        valid_square = False
+        value = None
+        while not valid_square:
+            square = input(self.letter + '\'s turn.  Input move [0-9]:\t')
+            # Error if value is not an int, or spot not available on the board
+            try:
+                if (value := int(square)) not in game.available_moves():
+                    raise ValueError
+                valid_square = True
+            except ValueError:
+                print('Invalid square!  Try again')
+        return value

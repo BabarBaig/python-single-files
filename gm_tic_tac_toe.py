@@ -23,14 +23,27 @@ class TicTacToe:
                 print(board_cur[w + h], ' | ', end='')
             print()
 
-    def available_moves(self) -> array:
-        return [i for i, spot in enumerate(self.board) if spot = ' ']
+    def available_moves(self) -> list:
+        return [i for i, spot in enumerate(self.board) if spot == ' ']
         # moves = []
         # for (i, spot) in enumerate(self.board):
         #     # ['x', 'x', 'o] -> [(0, 'x'), (1, 'x'), (2, 'o')]
         #     if spot == ' ':     # empty space
         #         moves.append(i)
         # return moves
+
+    def empty_squares(self):
+        return ' ' in self.board
+
+
+def play(game: TicTacToe, x_player, o_player, print_game=True):
+    if print_game:
+        game.print_board_cur()
+    letter = 'X'        # starting letter
+    # iterate while available empty squares.  Break when there's a winner.
+    while game.empty_squares():
+        pass
+
 
 ttt: TicTacToe = TicTacToe()
 ttt.print_board()
