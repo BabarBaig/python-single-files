@@ -2,7 +2,6 @@
 Implement player class for popular game: Tic Tac Toe
 """
 
-# import math
 import random
 
 
@@ -16,7 +15,7 @@ class Player:
 
 class RandomComputerPlayer(Player):
     def __init__(self, letter):
-        super.__init__(letter)
+        super().__init__(letter)
 
     def get_move(self, game):
         """ Get a random spot on the board """
@@ -26,7 +25,7 @@ class RandomComputerPlayer(Player):
 
 class HumanPlayer(Player):
     def __init__(self, letter):
-        super.__init__(letter)
+        super().__init__(letter)
 
     def get_move(self, game):
         valid_square = False
