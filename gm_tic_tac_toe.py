@@ -1,8 +1,10 @@
-""" Implement popular ttt: Tic Tac Toe """
+"""
+Implement popular game: Tic Tac Toe
+Reference: Kylie Ying: @kylieyying : https://www.youtube.com/watch?v=8ext9G7xspg 
+With minor modifications to improve readability.
+"""
 
 import gm_tic_tac_toe_player as tttp
-# from . import gm_tic_tac_toe_player as tttp
-# from ..aaa_py_simple import gm_tic_tac_toe_player as tttp
 
 class TicTacToe:
     def __init__(self):
