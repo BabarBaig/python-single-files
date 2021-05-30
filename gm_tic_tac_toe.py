@@ -1,7 +1,6 @@
 """ Implement popular game: Tic Tac Toe """
 
-import gm_tic_tac_toe_player as ttt     # pylint error: 'Unable to import': Ignore
-
+import gm_tic_tac_toe_player as ttt
 
 class TicTacToe:
     def __init__(self):
@@ -10,21 +9,28 @@ class TicTacToe:
         self.board = ['_' for _ in range(9)]        # Build a 3x3 board
         self.current_winner = None                  # Track any current winner
 
-    def print_board(self) -> None:
-        print()
-        for w in range(self.wide):
-            for h in range(self.high):
-                print(self.board[w + h], ' | ', end='')
-            print()
+    # def print_board(self) -> None:
+    #     print()
+    #     for w in range(self.wide):
+    #         for h in range(self.high):
+    #             print(self.board[w + h], ' | ', end='')
+    #         print()
 
     @staticmethod
-    def print_board_cur():      # Note we're NOT passing "self". It's the same board for both players.
+    def print_board_nums():
+        """
+        0 | 1 | 2 ... (tells us what number corresponds to what box on the board)
+        Note: This is a staticmethod, so we're NOT passing "self".
+        It's the same board for both players.
+        40:00 min into video.
+        """
         print()
-        board_cur = ['_' for _ in range(9)]        # Build a 3x3 board
-        for w in range(3):
-            for h in range(3):
-                print(board_cur[w + h], ' | ', end='')
-            print()
+        # Build a board of size [_sz_board x _sz_board]
+        _sz_board = 3
+        number_board = [[str(col*_sz_board + row) for row in range(_sz_board)] for col in range(_sz_board)]
+        for row in number_board:
+            print('| ' + ' | '.join(row) + ' |')
+        print()
 
     def available_moves(self) -> list:
         return [i for i, spot in enumerate(self.board) if spot == ' ']
@@ -71,7 +77,8 @@ def play(game: TicTacToe, x_player, o_player, print_game=True):
     """ return the winner's letter, or None for a tie """
 
     if print_game:
-        game.print_board_cur()
+        game.print_board_nums()
+
     letter = 'X'        # starting letter
     # iterate while available empty squares.  Break when there's a winner.
     while game.empty_squares():
@@ -97,7 +104,7 @@ def play(game: TicTacToe, x_player, o_player, print_game=True):
 
 # ttt: TicTacToe = TicTacToe()
 # ttt.print_board()
-# ttt.print_board_cur()
+# ttt.print_board_nums()
 
 if __name__ == '__main__':
     x_player = ttt.HumanPlayer('X')
