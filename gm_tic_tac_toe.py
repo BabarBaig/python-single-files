@@ -1,24 +1,27 @@
-""" Implement popular game: Tic Tac Toe """
+""" Implement popular ttt: Tic Tac Toe """
 
-import gm_tic_tac_toe_player as ttt
+import gm_tic_tac_toe_player as tttp
+# from . import gm_tic_tac_toe_player as tttp
+# from ..aaa_py_simple import gm_tic_tac_toe_player as tttp
 
 class TicTacToe:
     def __init__(self):
         self.wide: int = 3
         self.high: int = 3
-        self.board = ['_' for _ in range(9)]        # Build a 3x3 board
+        self.board = [' ' for _ in range(9)]        # Build a 3x3 board
         self.current_winner = None                  # Track any current winner
 
-    # def print_board(self) -> None:
-    #     print()
-    #     for w in range(self.wide):
-    #         for h in range(self.high):
-    #             print(self.board[w + h], ' | ', end='')
-    #         print()
+    def print_board(self) -> None:
+        print()
+        for w in range(self.wide):
+            for h in range(self.high):
+                print(self.board[w + h], ' | ', end='')
+            print()
 
     @staticmethod
     def print_board_nums():
         """
+        Print board with numbers for each position for player to choose their move.
         0 | 1 | 2 ... (tells us what number corresponds to what box on the board)
         Note: This is a staticmethod, so we're NOT passing "self".
         It's the same board for both players.
@@ -48,66 +51,62 @@ class TicTacToe:
         # return len(self.available_moves())
         return self.board.count(' ')
 
-    def make_move(self, square, letter):
-        if self.board(square) == ' ':       # This spot is available
-            self.board[square] = letter
-            if self.winner(square, letter):     # Did I just win?
+    def make_move(self, posn: int, letter: str):
+        if self.board[posn] == ' ':       # This spot is available
+            self.board[posn] = letter
+            if self.winner(posn, letter):     # Did I just win?
                 self.current_winner = letter
             return True
         return False
 
-    def winner(self, square, letter) -> bool:
+    def winner(self, posn: int, letter: str) -> bool:
         """ winner if there's 3 in a row anywhere: rows, cols, diagonals ... """
         for i in range(9, 3):   # check the rows
-            if letter == square[i] == square[i+1] == square[i+2]:
+            if letter == self.board[i] == self.board[i+1] == self.board[i+2]:
                 return True
         for i in range(3):      # checke the cols
-            if letter == square[i] == square[i+3] == square[i+6]:
+            if letter == self.board[i] == self.board[i+3] == self.board[i+6]:
                 return True
         # check diagonal: top-left - bot-right
-        if letter == square[0] == square[4] == square[8]:
+        if letter == self.board[0] == self.board[4] == self.board[8]:
                 return True
         # check diagonal: top-left - bot-right
-        if letter == square[2] == square[4] == square[6]:
+        if letter == self.board[2] == self.board[4] == self.board[6]:
                 return True
         return False
 
 
-def play(game: TicTacToe, x_player, o_player, print_game=True):
+def play(ttt: TicTacToe, x_player, o_player, print_ttt=True):
     """ return the winner's letter, or None for a tie """
 
-    if print_game:
-        game.print_board_nums()
+    if print_ttt:
+        ttt.print_board_nums()
 
     letter = 'X'        # starting letter
     # iterate while available empty squares.  Break when there's a winner.
-    while game.empty_squares():
-        square = o_player.get_move(game) if letter == 'O' else  x_player.get_move(game)
+    while ttt.empty_squares():
+        square = o_player.get_move(ttt) if letter == 'O' else  x_player.get_move(ttt)
 
-        if game.make_move(square, letter):
-            if print_game:
+        if ttt.make_move(square, letter):
+            if print_ttt:
                 print(letter + f' makes a move to square {square}')
-                game.print_board()      # print updated board
+                ttt.print_board()      # print updated board
                 print()
 
-        if game.current_winner:     # someone won the game!
-            if print_game:
+        if ttt.current_winner:     # someone won the ttt!
+            if print_ttt:
                 print(letter + ' wins!')
             return letter
 
         letter = 'O' if letter == 'X' else 'X'      # other player's turn
 
-    if print_game:      # If we made it this far, it's a tie
+    if print_ttt:      # If we made it this far, it's a tie
         print("It's a tie ...")
     return None
 
 
-# ttt: TicTacToe = TicTacToe()
-# ttt.print_board()
-# ttt.print_board_nums()
-
 if __name__ == '__main__':
-    x_player = ttt.HumanPlayer('X')
-    o_player = ttt.RandomComputerPlayer('O')
-    t = TicTacToe()
-    play(t, x_player, o_player, print_game=True)
+    x_player = tttp.HumanPlayer('X')
+    o_player = tttp.RandomComputerPlayer('O')
+    ttt = TicTacToe()
+    play(ttt, x_player, o_player, print_ttt=True)

@@ -19,12 +19,11 @@ class RandomComputerPlayer(Player):
 
     def get_move(self, game):
         """ Get a random spot on the board """
-
         return random.choice(game.available_moves())
 
 
 class HumanPlayer(Player):
-    def __init__(self, letter):
+    def __init__(self, letter) -> int :
         super().__init__(letter)
 
     def get_move(self, game):
