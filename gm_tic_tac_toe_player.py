@@ -17,7 +17,7 @@ class RandomComputerPlayer(Player):
     def __init__(self, letter):
         super().__init__(letter)
 
-    def get_move(self, game):
+    def get_move(self, game) -> int:
         """ Get a random spot on the board """
         return random.choice(game.available_moves())
 
@@ -26,7 +26,7 @@ class HumanPlayer(Player):
     def __init__(self, letter) -> int :
         super().__init__(letter)
 
-    def get_move(self, game):
+    def get_move(self, game) -> int:
         valid_square = False
         value = None
         while not valid_square:

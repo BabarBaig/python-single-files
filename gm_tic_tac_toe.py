@@ -15,18 +15,16 @@ class TicTacToe:
 
     def print_board(self) -> None:
         print()
-        for w in range(self.wide):
-            for h in range(self.high):
-                print(self.board[w + h], ' | ', end='')
-            print()
+        for row in [self.board[i*3 : (i+1)*3] for i in range(self.wide)]:
+            print('|' + ' | '.join(row) + ' |')
 
     @staticmethod
     def print_board_nums():
         """
         Print board with numbers for each position for player to choose their move.
-        0 | 1 | 2 ... (tells us what number corresponds to what box on the board)
-        Note: This is a staticmethod, so we're NOT passing "self".
-        It's the same board for both players.
+        Expected to be called only once at start of game.  0 | 1 | 2 ... (tells us what number
+        corresponds to what box on the board).  Note: This is a staticmethod, so we're NOT
+        passing "self".  It's the same board for both players.
         40:00 min into video.
         """
         print()
@@ -63,47 +61,51 @@ class TicTacToe:
 
     def winner(self, posn: int, letter: str) -> bool:
         """ winner if there's 3 in a row anywhere: rows, cols, diagonals ... """
-        for i in range(9, 3):   # check the rows
-            if letter == self.board[i] == self.board[i+1] == self.board[i+2]:
+        # check the rows for a winner
+        row_ind = posn // 3
+        row = self.board[row_ind * 3 : (row_ind + 1) * 3]
+        if all([spot == letter for spot in row]):
+            return True
+
+        # check the cols for a winner
+        col_idx = posn % 3
+        col = [self.board[col_idx + i*3] for i in range(self.high)]
+        if all([spot == letter for spot in col]):
+            return True
+
+        # check diagonals if posn is in [0, 2, 4, 6, 8]
+        if posn % 2 == 0:
+            tl_br = [self.board[i] for i in [0, 4, 8]]
+            if all([spot == letter for spot in tl_br]):
                 return True
-        for i in range(3):      # checke the cols
-            if letter == self.board[i] == self.board[i+3] == self.board[i+6]:
+            tr_bl = [self.board[i] for i in [2, 4, 6]]
+            if all([spot == letter for spot in tr_bl]):
                 return True
-        # check diagonal: top-left - bot-right
-        if letter == self.board[0] == self.board[4] == self.board[8]:
-                return True
-        # check diagonal: top-left - bot-right
-        if letter == self.board[2] == self.board[4] == self.board[6]:
-                return True
+
         return False
 
-
-def play(ttt: TicTacToe, x_player, o_player, print_ttt=True):
+def play(ttt: TicTacToe, x_player, o_player):
     """ return the winner's letter, or None for a tie """
 
-    if print_ttt:
-        ttt.print_board_nums()
+    ttt.print_board_nums()
 
     letter = 'X'        # starting letter
     # iterate while available empty squares.  Break when there's a winner.
     while ttt.empty_squares():
-        square = o_player.get_move(ttt) if letter == 'O' else  x_player.get_move(ttt)
+        posn = o_player.get_move(ttt) if letter == 'O' else  x_player.get_move(ttt)
 
-        if ttt.make_move(square, letter):
-            if print_ttt:
-                print(letter + f' makes a move to square {square}')
-                ttt.print_board()      # print updated board
-                print()
+        if ttt.make_move(posn, letter):
+            print(letter + f' makes a move to square {posn}')
+            ttt.print_board()      # print updated board
+            print()
 
         if ttt.current_winner:     # someone won the ttt!
-            if print_ttt:
-                print(letter + ' wins!')
+            print(letter + ' wins!\n')
             return letter
 
         letter = 'O' if letter == 'X' else 'X'      # other player's turn
 
-    if print_ttt:      # If we made it this far, it's a tie
-        print("It's a tie ...")
+    print("It's a tie ...")
     return None
 
 
@@ -111,4 +113,4 @@ if __name__ == '__main__':
     x_player = tttp.HumanPlayer('X')
     o_player = tttp.RandomComputerPlayer('O')
     ttt = TicTacToe()
-    play(ttt, x_player, o_player, print_ttt=True)
+    play(ttt, x_player, o_player)
