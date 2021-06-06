@@ -30,7 +30,7 @@ class HumanPlayer(Player):
         valid_square = False
         value = None
         while not valid_square:
-            square = input(self.letter + '\'s turn.  Input move [0-9]:\t')
+            square = input(self.letter + '\'s turn.  Input move [0-8]:\t')
             # Error if value is not an int, or spot not available on the board
             try:
                 if (value := int(square)) not in game.available_moves():
