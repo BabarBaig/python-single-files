@@ -1,0 +1,5 @@
+The link: https://developers.google.com/edu/python/
+is different from shown in the videos.
+It has links to both the videos and course exercises
+So provides access to a complete 2-day course!
+~
