@@ -31,6 +31,9 @@ import sys
 
 class GuessANumber():
     def __init__(self, guess:int, min:int = 1, max:int = 100):
+        """ Prompt use for a directory, an old string, and a new string.  In that directory,
+        find files that containing the old string and replace it with the new string
+        """
         self.guess = guess
         self.min = min
         self.max = max
