@@ -39,6 +39,7 @@ class Algo():
     def ind441(self):
         print('In Ind441')
         self.__all()
+        print(f"[{self.count.get_count()}] MaxBal > $15k ? Trim.")
         print(f"[{self.count.get_count()}] Check today's biggest decliners and gainers")
 
     def roth089(self):
@@ -60,7 +61,7 @@ class Algo():
     def jroth900(self):
         print('In JRoth900')
         self.__all()
-        print(f"[{self.count.get_count()}] MaxBal > $4k ? Trim to cash.")
+        print(f"[{self.count.get_count()}] MaxBal > $4k ? Trim.")
 
     def jind668(self):
         print('In JInd668')
@@ -70,6 +71,7 @@ class Algo():
     def utma118(self):
         print('In JRoth900')
         self.__all()
+        print(f"[{self.count.get_count()}] MaxBal > $1.5k ? Trim.")
 
     def run(self):
         """ Create a list of function pointers and call them in a loop """
