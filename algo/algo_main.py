@@ -26,21 +26,25 @@ class Algo():
         print(f"[{self.count.get()}] Run MStar mo3 ETF Quickrank [https://www.morningstar.com/etfs/screener-rank]")
         print(f"[{self.count.get()}] Check today's biggest gainers & decliners")
         print(f"[{self.count.get()}] Bias against buying what I bought < week ago.")
+        print(f"[{self.count.get()}] Recent momentum [MOON MRNA SFYF SPXL]")
 
     def __all(self):
         """ Suggested actions common to all accounts """
         print(f'[{self.count.get()}] Check open orders.  Push BUYs')
         print(f'[{self.count.get()}] Check cash')
         print(f'[{self.count.get()}] Check ModAlloc')
+        print(f'[{self.count.get()}] Consider buying $LoBal')
 
     def ind441(self):
         print('[Ind441] *********')
         self.__all()
         print(f"[{self.count.get()}] MaxBal > $15k ? Trim.")
+        print(f'[{self.count.get()}] Check positions with greatest % gain/loss')
         print(f"[{self.count.get()}] Check today's biggest decliners and gainers")
 
     def roth089(self):
         print('[Roth089] *********')
+        print(f"[{self.count.get()}] MaxBal > $15k ? Trim.")
         self.__all()
 
     def roll128(self):
@@ -54,19 +58,21 @@ class Algo():
     def jroll124(self):
         print('[JRoll124] *********')
         self.__all()
+        print(f"[{self.count.get()}] MaxBal > $7k ? Trim.")
 
     def jroth900(self):
         print('[JRoth900] *********')
-        self.__all()
+        # self.__all()
+        print(f"[{self.count.get()}] Cash is critically low!  No trading, except to build cash.")
         print(f"[{self.count.get()}] MaxBal > $4k ? Trim.")
 
     def jind668(self):
-        print('[Ind668] *********')
+        print('[JInd668] *********')
         self.__all()
-        print(f"[{self.count.get()}] Check today's biggest decliners and gainers")
+        print(f"[{self.count.get()}] Bias against buying a position more than once/wk")
 
     def utma118(self):
-        print('[JRoth900] *********')
+        print('[UTMA118] *********')
         self.__all()
         print(f"[{self.count.get()}] MaxBal > $1.5k ? Trim.")
 
@@ -78,7 +84,7 @@ class Algo():
                 self.jroth900, self.jind668, self.utma118]
         for account in accounts:
             # self.prompt_user(f'\n[{account.__name__}] ********* [(q)uit]\t')
-            if input(f'\n[{account.__name__}] ********* [(q)uit]\t') == 'q': sys.exit("Goodbye ...\n")
+            if input(f'\n\n[{account.__name__}] ********* [(q)uit]\t') == 'q': sys.exit("Goodbye ...\n")
             self.count.reset()
             account()
         print()
