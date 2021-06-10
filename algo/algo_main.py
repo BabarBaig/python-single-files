@@ -83,7 +83,6 @@ class Algo():
         accounts = [self.ind441, self.roth089, self.roll128, self.utma611, self.jroll124,
                 self.jroth900, self.jind668, self.utma118]
         for account in accounts:
-            # self.prompt_user(f'\n[{account.__name__}] ********* [(q)uit]\t')
             if input(f'\n\n[{account.__name__}] ********* [(q)uit]\t') == 'q': sys.exit("Goodbye ...\n")
             self.count.reset()
             account()
