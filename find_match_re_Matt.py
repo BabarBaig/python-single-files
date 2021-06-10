@@ -1,4 +1,6 @@
 #! /usr/bin/python
+# Credit Matthew Geiger
+
 import re
 import datetime
 
