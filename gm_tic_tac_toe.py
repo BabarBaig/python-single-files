@@ -84,7 +84,7 @@ class TicTacToe:
 
         return False
 
-def play(ttt: TicTacToe, x_player, o_player):
+def play(ttt: TicTacToe, x_player, o_player, print_game=True):
     """ return the winner's letter, or None for a tie """
 
     ttt.print_board_nums()
@@ -105,13 +105,25 @@ def play(ttt: TicTacToe, x_player, o_player):
 
         letter = 'O' if letter == 'X' else 'X'      # other player's turn
 
+        if print_game:
+            time.sleep(0.1 )
+
     print("It's a tie ...")
     return None
 
 
 if __name__ == '__main__':
-    x_player = tttp.HumanPlayer('X')
-    o_player = tttp.GeniusComputerPlayer('O')       # never loses
-    # o_player = tttp.RandomComputerPlayer('O')
-    ttt = TicTacToe()
-    play(ttt, x_player, o_player)
+    x_wins = 0
+    o_wins = 0
+    ties   = 0
+    for _ in range(1000):
+        # x_player = tttp.HumanPlayer('X')              # human player
+        x_player = tttp.RandomComputerPlayer('X')       # random player
+        o_player = tttp.GeniusComputerPlayer('O')       # never loses
+        ttt = TicTacToe()
+        result = play(ttt, x_player, o_player, print_game=False)
+        if result == 'X':   x_wins += 1
+        elif result == 'O': o_wins += 1
+        else:               ties += 1
+
+    print(f'After 1000 loops, {x_wins} X wins, {o_wins} O wins, and {ties} ties.')
