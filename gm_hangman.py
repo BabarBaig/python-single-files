@@ -27,7 +27,7 @@ def hangman():
     used_letters = set()
     lives = 7
 
-    # print(word)
+    print(word)
     while len(word_letters) > 0 and lives > 0:
         print(f'You have {lives} lives left')
         print("You've used these letters:\t", ' '.join(sorted(used_letters)))
