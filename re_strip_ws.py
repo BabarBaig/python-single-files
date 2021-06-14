@@ -13,13 +13,12 @@ def foo():
 #       f = open('C:/Users/Baig-Daily/Documents/05.Learn/Python/blah.txt','r');
         f = os.popen('tasklist /nh', 'r')
     except IOError as e:
-        print("File open error: ", e);
-        return;
+        print("File open error: ", e)
+        return
     for eachLine in f:      #Read data one line at a time into eachLine[]
 #       print (re.split(r'\s\s+', eachLine.strip()))
 #       print (re.split(r'\s\s+|\t', eachLine.strip()))
         print (re.split(r'\s\s+|\t', eachLine.strip()))
     f.close();          #Good practice, but not necessary
 
-foo();
-
+foo()
