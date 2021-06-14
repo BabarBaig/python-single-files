@@ -1,3 +1,5 @@
+""" 2021-06-13: Program works """
+
 import random
 
 
@@ -30,3 +32,4 @@ def is_win(player, opponent):
 
 while (retval := play()) != 'q':
     print(retval)
+print('\n')
