@@ -21,7 +21,7 @@ def get_valid_word(word_list) -> str:
     return word
 
 def hangman():
-    word = get_valid_word(aaa_words.words)
+    word = get_valid_word(gm_hangman_words.words)
     word_letters = set(word)        # letters in the hangman word
     alphabet = set(string.ascii_lowercase)
     used_letters = set()
