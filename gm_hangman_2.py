@@ -7,7 +7,7 @@ https://www.randomlists.com/data/words.json
 
 import random
 import string
-import aaa_words
+import gm_hangman_words
 
 def get_valid_word(word_list) -> str:
     """
