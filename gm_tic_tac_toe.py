@@ -111,6 +111,7 @@ def play(ttt: TicTacToe, x_player, o_player):
 
 if __name__ == '__main__':
     x_player = tttp.HumanPlayer('X')
-    o_player = tttp.RandomComputerPlayer('O')
+    o_player = tttp.GeniusComputerPlayer('O')       # never loses
+    # o_player = tttp.RandomComputerPlayer('O')
     ttt = TicTacToe()
     play(ttt, x_player, o_player)
