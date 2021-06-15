@@ -26,27 +26,28 @@ class Algo():
         self.Print('Run MStar mo3 ETF Quickrank [https://www.morningstar.com/etfs/screener-rank]')
         self.Print('Run Schwab screen Bob-a for y3, y5 outperformers.')
         self.Print('Recent momentum [MOON MRNA SFYF SPXL]')
-        self.Print('Get FBGRX to $3100 in most a/c')
-        self.Print('Get FCPVX to $3100 in most a/c')
-        self.Print('Buy AOM to soak-up excess cash')
-        # print(f"[{self.count.get()}] HIGHLY DISPURPTIVE IDEA: The higher the balance, the higher " +
-                # "the % gain it should show.  Balance & Gain should be linearly related.")
-        # print(f"[{self.count.get()}] Check today's biggest gainers & decliners")
-        # print(f"[{self.count.get()}] Stocks can have good/bad entry points.  See y1 chart to decide.\n\tSouring on unknown stocks b/c of time and unpredictability.")
+        self.Print('Buy AOM/AOR to soak-up excess cash')
+        # self.Print('IDEA: Higher balance posn should show higher % gain, b/c I have more at stake.  ' +
+        #         'Balance/Gain should be linearly related.')
+        # self.Print('IDEA: Leave alone posn $600+.  How to get to it optimally?' +
+        #         'If we get there quickly, we can capture all subsequent gains/losses.  But we only want gains!')
+        # self.Print('IDEA: Buy posn < $600 showing largest gain/loss to push their total gain/loss towards some imaginary median.')
+        # self.Print(Check today's biggest gainers & decliners")
+        # self.Print(Stocks can have good/bad entry points.  See y1 chart to decide.\n\tSouring on unknown stocks b/c of time and unpredictability.")
 
     def __frequent(self):
         """ Frequent messages """
         self.Print('Check cash.')
         self.Print('Check ModAlloc')
         self.Print('Check open orders.  Push BUYs.')
-        self.Print('Consider buying $LoBal if:\n\tNot bot > wk1.\n\tStock: y3 > VOO, y5 > VOO.\n\tETF: StdDev / Return > 1.')
+        self.Print("Buy $LoBal if:\n\t% chg today is +ve\n\tNot bot > wk1.\n\tStock: y3 > VOO, y5 > VOO.\n\tETF: StdDev / Return > 1.")
 
     def ind441(self):
-        print('\n[Ind441] *********')
+        print('[Ind441] *********')
         self.__frequent()
-        self.Print('Cash := $10k.  Excess > Buy AOM in trades of $4k daily.\n\t? Each will pay for mo1 expenses.')
+        self.Print('Cash := $10k.  Excess>Buy AOM/AOR in trades of $1k daily.')
         self.Print("MaxBal > $15k ? Trim.")
-        self.Print('Check positions with greatest % gain/loss.')
+        self.Print('Sort by "Total gain/loss %".  Buy if ...')
         self.Print('Check d1 biggest decliners and gainers.')
 
     def roth089(self):
