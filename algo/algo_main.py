@@ -24,31 +24,36 @@ class Algo():
         print()
         self.count_reset()
         self.Print('Run MStar mo3 ETF Quickrank [https://www.morningstar.com/etfs/screener-rank]')
-        self.Print('Run Schwab screen Bob-a for y3, y5 outperformers.')
-        self.Print('Recent momentum [MOON MRNA SFYF SPXL]')
-        self.Print('Buy AOM/AOR to soak-up excess cash')
-        # self.Print('IDEA: Higher balance posn should show higher % gain, b/c I have more at stake.  ' +
-        #         'Balance/Gain should be linearly related.')
-        # self.Print('IDEA: Leave alone posn $600+.  How to get to it optimally?' +
-        #         'If we get there quickly, we can capture all subsequent gains/losses.  But we only want gains!')
-        # self.Print('IDEA: Buy posn < $600 showing largest gain/loss to push their total gain/loss towards some imaginary median.')
-        # self.Print(Check today's biggest gainers & decliners")
-        # self.Print(Stocks can have good/bad entry points.  See y1 chart to decide.\n\tSouring on unknown stocks b/c of time and unpredictability.")
+        self.Print('Run Schwab screen Bob-a for y1 outperformers.')
+        self.Print('Buy to $3100 (most a/c): FBGRX FCPVX')
+        self.Print('Buy AOM/AOR $1k daily, to soak-up excess cash')
+        # self.Print("Buy $LoBal if:\n\t"
+        #         "1] % chg today is +ve\n\t"
+        #         "2] Not bot > wk1.\n\t"
+        #         "3] SMA20 > SMA200\n\t"
+        #         "4] SMA20 > SMA20d1 [SMA20 has +ve slope]\n\t"
+        #         "5] Stock: y3 > VOO, y5 > VOO.\n\t"
+        #         "6] ETF: StdDev / Return > 1")
+        self.Print("Momentum play: Buy [stocks/ETF/MF] that:\n\t"
+                "1] Today's highest % gainer\n\t"
+                "3] SMA20 > SMA200\n\t"
+                "4] SMA20 > SMA20d1 [SMA20 has +ve slope]\n\t"
+                "5] Stock: y3 > VOO, y5 > VOO.\n\t"
+                "6] ETF: StdDev / Return > 1")
 
     def __frequent(self):
         """ Frequent messages """
         self.Print('Check cash.')
         self.Print('Check ModAlloc')
-        self.Print('Check open orders.  Push BUYs.')
-        self.Print("Buy $LoBal if:\n\t% chg today is +ve\n\tNot bot > wk1.\n\tStock: y3 > VOO, y5 > VOO.\n\tETF: StdDev / Return > 1.")
+        self.Print('Push open BUYs.')
 
     def ind441(self):
         print('[Ind441] *********')
         self.__frequent()
         self.Print('Cash := $10k.  Excess>Buy AOM/AOR in trades of $1k daily.')
         self.Print("MaxBal > $15k ? Trim.")
-        self.Print('Sort by "Total gain/loss %".  Buy if ...')
-        self.Print('Check d1 biggest decliners and gainers.')
+        self.Print("Check Total gain/loss %.")
+        self.Print('Check d1    gain/loss %.')
 
     def roth089(self):
         print('[Roth089] *********')
@@ -102,3 +107,13 @@ class Algo():
 if __name__ == '__main__':
     algo = Algo()
     algo.run()
+
+        # self.Print("Monitor: Dimensional’s U.S. Equity ETF (DFUS), U.S. Small Cap ETF (DFAS), "
+        #       "U.S. Core Equity 2 ETF (DFAC) and U.S. Targeted Value ETF (DFAT)")
+        # self.Print("IDEA: Higher balance posn should show higher % gain, b/c I have more at "
+        #       "stake.  Balance/Gain should be linearly related.")
+        # self.Print("IDEA: Buy posn with largest gain/loss to push their total "
+        #       "gain/loss towards some imaginary median.')
+        # self.Print(Check today's biggest gainers & decliners")
+        # self.Print("Stocks can have good/bad entry points.  See y1 chart to decide.\n\tSouring on "
+        #       "unknown stocks b/c of time and unpredictability.")

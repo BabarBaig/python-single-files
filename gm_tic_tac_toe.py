@@ -117,8 +117,8 @@ if __name__ == '__main__':
     o_wins = 0
     ties   = 0
     for _ in range(1000):
-        # x_player = tttp.HumanPlayer('X')              # human player
-        x_player = tttp.RandomComputerPlayer('X')       # random player
+        x_player = tttp.HumanPlayer('X')              # human player
+        # x_player = tttp.RandomComputerPlayer('X')       # random player
         o_player = tttp.GeniusComputerPlayer('O')       # never loses
         ttt = TicTacToe()
         result = play(ttt, x_player, o_player, print_game=False)
