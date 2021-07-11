@@ -13,13 +13,15 @@ def rename_files_in_cur_dir(str_old: str, str_new: str) -> None:
         if dont_prompt:
             print(f'Rename:\n{fn_old}\n{fn_new}')
         else:
-            resp = input(f'{fn_old}\n{fn_new}\nRename? [Yes No All Reset Quit]?\t')
-            if resp == 'a':
-                dont_prompt = True
+            resp = input(f'{fn_old}\n{fn_new}\nRename? [Yes:default No All Reset Quit]?\t')
             if resp == 'n':
                 continue
+            if resp == 'a':
+                dont_prompt = True
             if resp == 'r':     # Reset search/replace
                 break
+            if resp == 'q':
+                sys.exit(0)
 
         if os.path.isfile(fn_new):
             print(fn_new, ' already exists! ********************')
@@ -30,28 +32,6 @@ def rename_files_in_cur_dir(str_old: str, str_new: str) -> None:
         except OSError as e:
             print('Error: Rename failed:', e)
             sys.exit(0)
-
-
-def get_old_new_fn() -> None:
-    """ Rename files by replacing str_old with str_new.
-    """
-    do_continue: bool = True
-    str_old = 'str_old'
-    str_new = 'str_new'
-    str_old = input('\nEnter old string [Quit newFolder]:\t')
-    if str_old == 'q':
-        sys.exit(0)
-    if str_old == 'f':
-        do_continue = False
-    else:
-        str_new = input('Enter new string [Quit Reset]:\t')
-        if str_new == 'q':
-            sys.exit(0)
-        if str_new == 'r':
-            do_continue = False
-    if do_continue:
-        print(f'Replacing [{str_old}] with [{str_new}]')
-    return do_continue, str_old, str_new
 
 
 def switch_folder(folder: str) -> None:
@@ -72,7 +52,6 @@ def rename_files_main() -> None:
     if len(resp) > 1:
         cwd = resp
 
-    # do_continue: bool = True
     while 1:
         switch_folder(cwd)
 
@@ -86,10 +65,9 @@ def rename_files_main() -> None:
 
         rename_files_in_cur_dir(str_old, str_new)
 
-        if (do_continue := switch_folder(cwd+'\\000_Seen')) == False:
-            break
-        if (do_continue := rename_files_in_cur_dir(str_old, str_new)) == False:
-            break
+        switch_folder(cwd+'\\000_Seen')
+
+        rename_files_in_cur_dir(str_old, str_new)
 
 
 def y2_y4_digit() -> None:
