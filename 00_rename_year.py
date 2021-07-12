@@ -1,13 +1,12 @@
 import os
 
-def reformat2(fn: str) -> bool:
-	return False
 
 def getnewfn(fn: str) -> str:
 	if not fn[:6].isdigit():
 		return None
 	fn_new = '20' + fn[0:2] + '-' + fn[2:4] + '-' + fn[4:]
 	return fn_new
+
 
 def date_reformat() -> None:
 	print('In folder:', os.getcwd())
