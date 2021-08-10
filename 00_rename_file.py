@@ -3,7 +3,7 @@ import sys
 
 
 def switch_folder(folder: str) -> None:
-    print(f'Switching to folder [{folder}]')
+    print(f'\nSwitching to folder [{folder}]')
     try:
         os.chdir(folder)
     except OSError as e:
