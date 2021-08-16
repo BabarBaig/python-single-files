@@ -2,13 +2,20 @@ import os
 import sys
 
 
+def my_input(prompt: str):
+    if (resp := input(prompt)) == 'q':
+        sys.exit(0)
+    return resp
+
+
 def switch_folder(folder: str) -> None:
     print(f'\nSwitching to folder [{folder}]')
     try:
         os.chdir(folder)
     except OSError as e:
         print('Unable to open folder:', e)
-        sys.exit(0)
+        return False
+    return True
 
 
 def rename_files_in_cur_dir(str_old: str, str_new: str) -> None:
@@ -18,8 +25,7 @@ def rename_files_in_cur_dir(str_old: str, str_new: str) -> None:
             continue                # Current file is not a match.  Go to next one.
         fn_new: str = fn_old.replace(str_old, str_new)
         if do_prompt:
-            resp = input(f'{fn_old}\n{fn_new}\nRename? [Yes(default) No All Reset Quit]?\t')
-            if resp == 'q':     sys.exit(0)
+            resp = my_input(f'{fn_old}\n{fn_new}\nRename? [Yes(default) No All Reset Quit]?\t')
             if resp == 'n':     continue
             if resp == 'a':     do_prompt = False
             if resp == 'r':     break       # Reset search/replace
@@ -48,12 +54,13 @@ def rename_files() -> None:
         cwd = resp
 
     while True:
-        switch_folder(cwd)
-        if (str_old := input('\nEnter old string [Quit]:\t')) == 'q':       sys.exit(0)
-        if (str_new := input(  'Enter new string [Quit]:\t')) == 'q':       sys.exit(0)
-        rename_files_in_cur_dir(str_old, str_new)
-        switch_folder(cwd+'\\000_Seen')
-        rename_files_in_cur_dir(str_old, str_new)
+        str_old = my_input('\nEnter old string [Quit]:\t')
+        str_new = my_input(  'Enter new string [Quit]:\t')
+        if switch_folder(cwd):
+            rename_files_in_cur_dir(str_old, str_new)
+
+        if switch_folder(cwd+'\\000_Seen'):
+            rename_files_in_cur_dir(str_old, str_new)
 
 
 if __name__ == '__main__':
