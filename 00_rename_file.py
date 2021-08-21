@@ -25,8 +25,8 @@ def switch_folder() -> None:
 def rename_files_in_cur_dir(str_old: str, str_new: str) -> None:
     do_prompt: bool = True
     for fn_old in os.listdir():
-        if str_old not in fn_old:
-            continue                # Current file is not a match.  Go to next one.
+        if str_old not in fn_old:       # Current file is not a match.  Go to next one.
+            continue
         fn_new: str = fn_old.replace(str_old, str_new)
         if do_prompt:
             resp = my_input(f'{fn_old}\n{fn_new}\nRename? [Yes(default) No All Reset Quit]?\t')
