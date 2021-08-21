@@ -8,14 +8,18 @@ def my_input(prompt: str):
     return resp
 
 
-def switch_folder(folder: str) -> None:
-    print(f'\nSwitching to folder [{folder}]')
+def switch_folder() -> None:
+    cwd = os.getcwd()
+    resp = input(f'Enter home dir:\n{cwd}\n')
+    if len(resp) > 1:       # User provided a new folder path
+        cwd = resp
+    print(f'\nSwitching to folder [{cwd}]')
+
     try:
-        os.chdir(folder)
+        os.chdir(cwd)
     except OSError as e:
         print('Unable to open folder:', e)
-        return False
-    return True
+        sys.exit(0)
 
 
 def rename_files_in_cur_dir(str_old: str, str_new: str) -> None:
@@ -48,21 +52,14 @@ def rename_files() -> None:
     C:\\Users\\BabBa, or the correct folder.  Get to folder where target files are located.
     NOTE: We rename files in current folder and its subfolder before asking for new str_old str_new.
     """
-    cwd = os.getcwd()
-    resp = input(f'Enter home dir:\n{cwd}\n')
-    if len(resp) > 1:       # User provided a new folder path
-        cwd = resp
 
     while True:
         str_old = my_input('\nEnter old string [Quit]:\t')
         str_new = my_input(  'Enter new string [Quit]:\t')
-        if switch_folder(cwd):
-            rename_files_in_cur_dir(str_old, str_new)
-
-        if switch_folder(cwd+'\\000_Seen'):
-            rename_files_in_cur_dir(str_old, str_new)
+        rename_files_in_cur_dir(str_old, str_new)
 
 
 if __name__ == '__main__':
+    switch_folder()
     rename_files()
 
