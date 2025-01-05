@@ -1,5 +1,6 @@
 #! /usr/bin/python
 # Credit Matthew Geiger
+# Fina a match using Regular Expressions
 
 import re
 import datetime
