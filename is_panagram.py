@@ -1,7 +1,8 @@
 def is_pangram(str):
-""" Optimized function.  Checks if (potentially very long) input string 
-    has all the letters of the alphabet.  Exits immediately if all 26
-    letters are found, without checking the rest of the string
+""" Create an optimized panagram function.  Checks if (potentially very long) input string
+    has all the letters of the alphabet.  Exits immediately if all 26 letters are found 
+    without checking the rest of the string.  On multiple calls with very long strings 
+    this can yield a noticeable performance improvement.
 """
     letters_seen = set()    # Create a set of letters seen so far
     for chr in str:
